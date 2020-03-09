@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Brightcove test</title>
+</head>
+
+<body>
+<p>Hey, if you look at this code it is totally different than what is on https://support.brightcove.com/step-step-brightcove-player and this is what was causing the confusion in the first place.</p>
+<p>What they did is put all of the logic inside the video-js web component, so now just a default player works perfectly responsively without any external stuff.</p>
+<p>This is example is from https://support.brightcove.com/responsive-sizing-brightcove-player</p>
+<p>Notice in github source how dramatically simpler the html page code is .</p>
+
+<video-js data-video-id="6136149884001"
+  data-account="6055873625001"
+  data-player="default"
+  data-embed="default"
+  data-application-id
+  class="video-js vjs-16-9"
+  controls></video-js>
+
+  <p>This is exactly the same one, except with a 4-3 aspect ratio. Of course, it looks dumb because it doesn't match the video itself.</p>
+
+<video-js data-video-id="6136149884001"
+  data-account="6055873625001"
+  data-player="default"
+  data-embed="default"
+  data-application-id
+  class="video-js vjs-4-3"
+  controls></video-js>
+
+  <p>Now the same one, except with the 'fluid' ratio. Notice that this needs more html surrounding it, so it isn't successful without it.</p>
+
+<video-js data-video-id="6136149884001"
+  data-account="6055873625001"
+  data-player="default"
+  data-embed="default"
+  data-application-id
+  class="video-js fluid"
+  controls></video-js>
+
+  <p>Surrounding the fluid with the required divs, maxing at 640 width</p>
+
+  <div style="position: relative; display: block; max-width: 640px;">
+    <div style="padding-top: 56.25%;">
+      <video-js data-video-id="6136149884001"
+        data-account="6055873625001"
+            data-player="default"
+            data-embed="default"
+            data-application-id
+            class="video-js fluid"
+            controls
+            style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;"></video-js>
+      </div>
+    </div>
+<script src="https://players.brightcove.net/6055873625001/default_default/index.min.js"></script>
+
+  </body>
+
+</html>
